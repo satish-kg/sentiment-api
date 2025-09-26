@@ -1,7 +1,7 @@
 import pickle
 from fastapi import FastAPI
 from pydantic import BaseModel 
-import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd # Although not strictly needed, good practice if using DataFrame logic
 
 # --- 1. Load Assets ---
