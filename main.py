@@ -1,6 +1,7 @@
 import pickle
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel 
+import CORSMiddleware
 import pandas as pd # Although not strictly needed, good practice if using DataFrame logic
 
 # --- 1. Load Assets ---
@@ -19,6 +20,14 @@ app = FastAPI(
     description="Predicts sentiment (-1, 0, 1) for a given text using LinearSVC.",
     version="1.0.0"
 )
+
+# Define the origins that are allowed to make requests
+# 1. Your local React development server
+# 2. Your actual deployed React application (when you deploy the frontend later)
+origins = [
+    "https://senfiment-analyzer.netlify.app/",  # Your Vite/React development server
+    # You can add your deployed frontend URL here later, e.g., "https://my-frontend-app.onrender.com"
+]
 
 # --- 3. Define the Input Schema (Pydantic Model) ---
 # This ensures the API only accepts a JSON body with a 'text' string
