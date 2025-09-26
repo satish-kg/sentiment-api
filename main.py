@@ -29,6 +29,14 @@ origins = [
     # You can add your deployed frontend URL here later, e.g., "https://my-frontend-app.onrender.com"
 ]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # --- 3. Define the Input Schema (Pydantic Model) ---
 # This ensures the API only accepts a JSON body with a 'text' string
 class TextToPredict(BaseModel):
