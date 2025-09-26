@@ -21,17 +21,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Define the origins that are allowed to make requests
-# 1. Your local React development server
-# 2. Your actual deployed React application (when you deploy the frontend later)
 origins = [
-    "https://senfiment-analyzer.netlify.app/",  # Your Vite/React development server
-    # You can add your deployed frontend URL here later, e.g., "https://my-frontend-app.onrender.com"
+    "https://senfiment-analyzer.netlify.app", 
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    #allow_origins=origins, 
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
